@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderby('id')->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -36,9 +36,9 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
